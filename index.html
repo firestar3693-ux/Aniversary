@@ -1,38 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For Snuggles 🎀</title>
+<title>The Beginning of Our 2nd Year 😗💞👉🏻👈🏻</title>
 <style>
 body{
-  background:#ffe6f0;
-  text-align:center;
+  margin:0;
+  padding:0;
+  height:100vh;
+  background:linear-gradient(135deg,#ffe4ec,#fff0f6);
   font-family:Comic Sans MS;
+  text-align:center;
+  color:#ff4f8b;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
-.teddy{
-  font-size:120px;
-  animation:hug 2s infinite;
+h1{
+  font-size:32px;
+  margin-bottom:30px;
 }
-@keyframes hug{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.2)}
-  100%{transform:scale(1)}
+p{
+  font-size:20px;
+  margin-bottom:40px;
 }
 button{
-  padding:15px 35px;
+  padding:18px 40px;
+  font-size:18px;
   border:none;
   border-radius:30px;
-  background:#ff69b4;
+  background:#ff8fc7;
   color:white;
-  font-size:20px;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+button:hover{
+  transform: scale(1.1);
+}
+/* Sparkles animation */
+.sparkle{
+  position:absolute;
+  font-size:24px;
+  animation:fall 3s linear infinite;
+}
+@keyframes fall{
+  0%{top:-10%; opacity:1;}
+  100%{top:110%; opacity:0;}
 }
 </style>
 </head>
+
 <body>
 
-<h1>Hey Snuggles 🥹🎀</h1>
-<div class="teddy">🧸💞</div>
-<p>This teddy is hugging you tight 🤍</p>
+<h1>The Beginning of Our 2nd Year 😗💞👉🏻👈🏻</h1>
+<p>Every moment with you is a treasure ✨</p>
+<button onclick="location.href='page2.html'">Next 💖</button>
 
-<button onclick="location.href='page2.html'">Next 💕</button>
+<!-- Floating sparkles -->
+<script>
+for(let i=0;i<25;i++){
+  const sparkle = document.createElement('div');
+  sparkle.className='sparkle';
+  sparkle.innerHTML='✨';
+  sparkle.style.left = Math.random()*100+'%';
+  sparkle.style.animationDuration = (2 + Math.random()*3) + 's';
+  document.body.appendChild(sparkle);
+}
+</script>
+
 </body>
 </html>
