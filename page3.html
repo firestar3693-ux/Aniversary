@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>A Little Secret 🎀</title>
+<title>Virtual Hugs 🤍</title>
 <style>
 body{
-  margin:0;
-  background:#fff5f8;
+  background:#fef6ff;
   font-family:Comic Sans MS;
   text-align:center;
-  overflow:hidden;
+  padding-top:60px;
+  color:#ff69b4;
 }
-h1{
-  margin-top:60px;
-  color:#ff6fa5;
+.hug{
+  font-size:100px;
+  animation:hug 1.5s infinite;
+}
+@keyframes hug{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.25)}
+  100%{transform:scale(1)}
+}
+p{
+  font-size:22px;
+  margin-top:20px;
 }
 button{
+  margin-top:30px;
   padding:14px 30px;
   border:none;
   border-radius:25px;
@@ -22,52 +32,17 @@ button{
   color:white;
   font-size:18px;
 }
-#secret{
-  display:none;
-  margin-top:30px;
-  font-size:20px;
-  color:#ff4f8b;
-}
-.petal{
-  position:absolute;
-  font-size:22px;
-  animation:fall linear infinite;
-}
-@keyframes fall{
-  from{top:-10%}
-  to{top:110%}
-}
 </style>
 </head>
 
 <body>
 
-<h1>Tap to unlock something cute 🔐</h1>
-<button onclick="unlock()">Unlock 💖</button>
+<div class="hug">🧸🤍🐱</div>
 
-<div id="secret">
-  <p>Hey Snuggles 🥹🎀</p>
-  <p>You are my comfort, my smile, my favourite place to be 🌸</p>
-  <p>I feel calm whenever it’s you 🤍</p>
-</div>
+<p>Virtual hugs for uh 🥹💞</p>
+<p>Tight, warm & full of love ✨</p>
 
-<br>
-<button onclick="location.href='page4.html'">One Last Page 💞</button>
-
-<script>
-function unlock(){
-  document.getElementById("secret").style.display="block";
-}
-
-for(let i=0;i<25;i++){
-  let p=document.createElement("div");
-  p.innerHTML="🌸";
-  p.className="petal";
-  p.style.left=Math.random()*100+"%";
-  p.style.animationDuration=(4+Math.random()*4)+"s";
-  document.body.appendChild(p);
-}
-</script>
+<button onclick="location.href='page4.html'">Last Page 🎶</button>
 
 </body>
 </html>
