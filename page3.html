@@ -9,14 +9,15 @@ body{
   height:100vh;
   background:#fff0f6;
   font-family:Comic Sans MS;
-  overflow:hidden;
   text-align:center;
+  overflow:hidden;
   color:#ff4f8b;
 }
 h1{
   margin-top:20px;
   font-size:32px;
 }
+
 /* Hug container */
 .hug-container{
   position:relative;
@@ -24,30 +25,26 @@ h1{
   height:70vh;
   overflow:hidden;
 }
+
 /* Teddy & Kitty style */
 .teddy, .kitty{
   position:absolute;
   font-size:120px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(0.5);
+  cursor:pointer;
   transition: transform 0.3s;
 }
-/* Approach center animation */
-@keyframes approachCenterTeddy{
-  0%{top:110%; left:20%; transform:rotate(0deg);}
-  50%{top:50%; left:40%; transform:rotate(-10deg);}
-  100%{top:50%; left:45%; transform:rotate(0deg);}
+
+/* Hug arms animation (expand toward user) */
+@keyframes hugUser{
+  0%{transform:translate(-50%,-50%) scale(0.5) rotate(0deg);}
+  50%{transform:translate(-50%,-50%) scale(1.2) rotate(5deg);}
+  100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);}
 }
-@keyframes approachCenterKitty{
-  0%{top:110%; left:80%; transform:rotate(0deg);}
-  50%{top:50%; left:60%; transform:rotate(10deg);}
-  100%{top:50%; left:55%; transform:rotate(0deg);}
-}
-/* Arms hug motion */
-@keyframes hugMotion{
-  0%,100%{transform:scale(1) rotate(0deg);}
-  25%{transform:scale(1.2) rotate(5deg);}
-  50%{transform:scale(1.3) rotate(-5deg);}
-  75%{transform:scale(1.2) rotate(5deg);}
-}
+
+/* Floating hearts */
 .particle{
   position:absolute;
   font-size:24px;
@@ -57,6 +54,7 @@ h1{
   0%{top:-10%; opacity:1;}
   100%{top:110%; opacity:0;}
 }
+
 p{
   font-size:22px;
   margin-top:20px;
@@ -79,14 +77,14 @@ button{
 
 <div class="hug-container">
   <!-- Teddy -->
-  <div class="teddy" id="teddy" style="animation:approachCenterTeddy 4s ease-in-out forwards;">🧸</div>
+  <div class="teddy" id="teddy">🧸</div>
   <!-- Kitty -->
-  <div class="kitty" id="kitty" style="animation:approachCenterKitty 4s ease-in-out forwards 0.5s;">🐱</div>
+  <div class="kitty" id="kitty" style="top:65%;">🐱</div>
 </div>
 
 <p>Click on them for extra hugs! ✨</p>
 
-<button onclick="location.href='page5.html'">Next Page 🎀</button>
+<button onclick="location.href='page4.html'">Next Page 🎀</button>
 
 <!-- Floating hearts -->
 <script>
@@ -99,25 +97,20 @@ for(let i=0;i<20;i++){
   document.body.appendChild(heart);
 }
 
-// Interactive hug motion
+// Teddy hug animation
 const teddy = document.getElementById('teddy');
 const kitty = document.getElementById('kitty');
 
-function hugAnimation(el){
-  el.style.animation = 'hugMotion 1.5s infinite alternate';
+function hugUser(el){
+  el.style.animation='hugUser 1.5s ease-in-out forwards';
 }
 
-function resetAnimation(el, originalAnim){
-  el.style.animation = originalAnim;
-}
+// Hover or tap to hug user
+teddy.addEventListener('mouseover', ()=> hugUser(teddy));
+teddy.addEventListener('touchstart', ()=> hugUser(teddy));
 
-// Teddy hover / tap
-teddy.addEventListener('mouseover', ()=> hugAnimation(teddy));
-teddy.addEventListener('mouseout', ()=> resetAnimation(teddy,'approachCenterTeddy 4s ease-in-out forwards'));
-
-// Kitty hover / tap
-kitty.addEventListener('mouseover', ()=> hugAnimation(kitty));
-kitty.addEventListener('mouseout', ()=> resetAnimation(kitty,'approachCenterKitty 4s ease-in-out forwards 0.5s'));
+kitty.addEventListener('mouseover', ()=> hugUser(kitty));
+kitty.addEventListener('touchstart', ()=> hugUser(kitty));
 </script>
 
 </body>
