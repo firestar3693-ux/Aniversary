@@ -4,20 +4,48 @@
 <title>Virtual Hugs 🤍</title>
 <style>
 body{
-  background:#fef6ff;
+  margin:0;
+  padding:0;
+  height:100vh;
+  background:#fff0f6;
   font-family:Comic Sans MS;
+  overflow:hidden;
   text-align:center;
-  padding-top:60px;
-  color:#ff69b4;
+  color:#ff4f8b;
 }
-.hug{
+h1{
+  margin-top:20px;
+  font-size:30px;
+}
+/* Hug container */
+.hug-container{
+  position:relative;
+  width:100%;
+  height:70vh;
+  overflow:hidden;
+}
+/* Teddy & Kitty style */
+.teddy, .kitty{
+  position:absolute;
   font-size:100px;
-  animation:hug 1.5s infinite;
+  transition: transform 0.3s;
 }
-@keyframes hug{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.25)}
-  100%{transform:scale(1)}
+/* Teddy movement */
+@keyframes teddyMove{
+  0%{top:120%; left:20%; transform:rotate(0deg);}
+  50%{top:50%; left:40%; transform:rotate(-10deg);}
+  100%{top:50%; left:45%; transform:rotate(0deg);}
+}
+/* Kitty movement */
+@keyframes kittyMove{
+  0%{top:120%; left:80%; transform:rotate(0deg);}
+  50%{top:50%; left:60%; transform:rotate(10deg);}
+  100%{top:50%; left:55%; transform:rotate(0deg);}
+}
+/* Arm hug animation (scale + rotate) */
+@keyframes hugArms{
+  0%,100%{transform:scale(1) rotate(0deg);}
+  50%{transform:scale(1.2) rotate(5deg);}
 }
 p{
   font-size:22px;
@@ -37,12 +65,41 @@ button{
 
 <body>
 
-<div class="hug">🧸🤍🐱</div>
+<h1>Virtual Hugs for Snuggles 🥹💞</h1>
 
-<p>Virtual hugs for uh 🥹💞</p>
-<p>Tight, warm & full of love ✨</p>
+<div class="hug-container">
+  <!-- Teddy -->
+  <div class="teddy" style="animation:teddyMove 4s ease-in-out forwards;">
+    🧸🤍
+  </div>
+  <!-- Kitty -->
+  <div class="kitty" style="animation:kittyMove 4s ease-in-out forwards 0.5s;">
+    🐱💞
+  </div>
+</div>
 
-<button onclick="location.href='page4.html'">Last Page 🎶</button>
+<p>Click on them for extra hugs! ✨</p>
+
+<button onclick="location.href='page5.html'">Next Page 🎀</button>
+
+<script>
+const teddy = document.querySelector('.teddy');
+const kitty = document.querySelector('.kitty');
+
+teddy.addEventListener('mouseover', ()=> {
+  teddy.style.animation = 'hugArms 1s infinite alternate';
+});
+teddy.addEventListener('mouseout', ()=> {
+  teddy.style.animation = 'teddyMove 4s ease-in-out forwards';
+});
+
+kitty.addEventListener('mouseover', ()=> {
+  kitty.style.animation = 'hugArms 1s infinite alternate';
+});
+kitty.addEventListener('mouseout', ()=> {
+  kitty.style.animation = 'kittyMove 4s ease-in-out forwards 0.5s';
+});
+</script>
 
 </body>
 </html>
